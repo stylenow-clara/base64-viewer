@@ -5,7 +5,8 @@
   <img id="img" alt="Base64 Image" />
 <script>
   const params = new URLSearchParams(location.search);
-  const b64 = params.get('b64') || '';
+  let b64 = params.get('b64') || '';
+  b64.replace(/ /g, '+');
   const img = document.getElementById('img');
 
   if (b64.startsWith('data:')) {
