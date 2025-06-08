@@ -3,9 +3,17 @@
 <head><meta charset="utf-8"/></head>
 <body>
   <img id="img" alt="Base64 Image" />
-  <script>
-    const params = new URLSearchParams(location.search);
-    document.getElementById('img').src = 'data:image/png;base64,' + params.get('b64');
-  </script>
+<script>
+  const params = new URLSearchParams(location.search);
+  const b64 = params.get('b64') || '';
+  const img = document.getElementById('img');
+
+  if (b64.startsWith('data:')) {
+    img.src = b64;
+  } else {
+    img.src = 'data:image/png;base64,' + b64;
+  }
+</script>
+
 </body>
 </html>
